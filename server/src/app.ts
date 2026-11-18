@@ -4,6 +4,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { HttpError } from './httpError.ts';
 import { authRouter } from './routes/auth.ts';
+import { catalogRouter } from './routes/catalog.ts';
 
 export function createApp() {
   const app = express();
@@ -22,6 +23,7 @@ export function createApp() {
 
   // Each feature adds its router here: catalog, cart, checkout, admin.
   app.use('/api', authRouter);
+  app.use('/api', catalogRouter);
   app.use('/api', (_req, res) => void res.status(404).json({ error: 'Not found' }));
 
   // In production the built React app is served from the same origin.

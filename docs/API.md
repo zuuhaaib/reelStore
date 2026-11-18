@@ -45,7 +45,10 @@ Status legend: ✅ built · ⏳ planned (owner in brackets)
 | PUT | `/me` | any of `{ firstName, lastName, address, card }` | `200 { user }` |
 | GET | `/me/orders` | | `200 { orders: Order[] }` newest first |
 
-## Catalog ⏳ [me], public
+## Catalog ✅ [me], public
+
+`q` searches name, description, format, genre and label (case-insensitive substring). Defaults: `sort=name&dir=asc`.
+Unknown `sort`/`dir` values or a repeated parameter give `400`.
 
 | Method | Path | Success |
 |---|---|---|

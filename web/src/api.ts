@@ -12,6 +12,25 @@ export type User = {
   card: { name: string; last4: string; expiry: string } | null
 }
 
+export type Item = {
+  id: number
+  name: string
+  description: string
+  category: string
+  brand: string
+  model: string
+  genre: string
+  priceCents: number
+  quantity: number
+  imageUrl: string | null
+  trailerUrl: string | null
+}
+
+export type Facets = { categories: string[]; brands: string[]; models: string[]; genres: string[] }
+
+const cad = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' })
+export const money = (cents: number) => cad.format(cents / 100)
+
 export class ApiError extends Error {
   status: number
   constructor(status: number, message: string) {
